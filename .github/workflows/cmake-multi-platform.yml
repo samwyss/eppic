@@ -54,7 +54,7 @@ jobs:
     - name: Install MSMPI on Windows
       if: runner.os == 'Windows'
       run: |
-        New-Item $PWD\msmpi\
+        New-Item $PWD\msmpi
         curl -L -o $PWD\msmpi\msmpisetup.exe https://aka.ms/msmpisetup
         curl -L -o $PWD\msmpi\msmpisdk.msi https://aka.ms/msmpisdk
         Start-Process $PWD\msmpi\msmpisetup.exe -ArgumentList '/quiet' -Wait
