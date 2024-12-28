@@ -11,17 +11,14 @@ project(EPPIC
 )
 
 # compiler flags -------------------------------------------------------------------------------------------------------
-if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-    message("Building EPPIC using GNU compiler flags specified in CMakeLists.txt")
-    if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-        add_compile_options(-O0 -Wall -g3)
-    elseif (CMAKE_BUILD_TYPE STREQUAL "Release")
-        # may also add -fopt-info-vec-all for vectorization report
-        add_compile_options(-O3 -g0 -DNDEBUG -Wall -fstrict-aliasing -ftree-vectorize -march=native -mtune=native -mprefer-vector-width=512 -fno-trapping-math -fno-math-errno -flto)
-    elseif (CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo")
-        # may also add -fopt-info-vec-all for vectorization report
-        add_compile_options(-O3 -g3 -Wall -fstrict-aliasing -ftree-vectorize -march=native -mtune=native -mprefer-vector-width=512 -fno-trapping-math -fno-math-errno -flto)
-    endif ()
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+    add_compile_options(-O0 -Wall -g3)
+elseif (CMAKE_BUILD_TYPE STREQUAL "Release")
+    # may also add -fopt-info-vec-all for vectorization report
+    add_compile_options(-O3 -g0 -DNDEBUG -Wall -fstrict-aliasing -ftree-vectorize -march=native -mtune=native -mprefer-vector-width=512 -fno-trapping-math -fno-math-errno -flto)
+elseif (CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo")
+    # may also add -fopt-info-vec-all for vectorization report
+    add_compile_options(-O3 -g3 -Wall -fstrict-aliasing -ftree-vectorize -march=native -mtune=native -mprefer-vector-width=512 -fno-trapping-math -fno-math-errno -flto)
 endif ()
 
 # dependencies ---------------------------------------------------------------------------------------------------------
@@ -38,21 +35,20 @@ add_library(Core
 )
 
 target_link_libraries(Core
-    PUBLIC MPI:MPI_CXX
+        PUBLIC MPI::MPI_CXX
 )
 
 target_link_libraries(${PROJECT_NAME}
-        PRIVATE MPI::MPI_CXX
         PRIVATE Core
+        PRIVATE MPI::MPI_CXX
 )
 
 target_include_directories(Core
-    PUBLIC ${MPI_CXX_INCLUDE_PATH}
+        PUBLIC ${MPI_CXX_INCLUDE_PATH}
 )
 
 target_include_directories(${PROJECT_NAME}
-        PRIVATE ${PROJECT_SOURCE_DIR}/src
-        PRIVATE ${PROJECT_SOURCE_DIR}/core
         PRIVATE ${PROJECT_BINARY_DIR}
+        PRIVATE ${PROJECT_SOURCE_DIR}/src/core
         PRIVATE ${MPI_CXX_INCLUDE_PATH}
 )
