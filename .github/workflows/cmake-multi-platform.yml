@@ -58,6 +58,7 @@ jobs:
         curl -L -o msmpisdk.msi https://aka.ms/msmpisdk
         Start-Process msmpisetup.exe -ArgumentList '/quiet' -Wait
         Start-Process msmpisdk.msi -ArgumentList '/quiet' -Wait
+      shell: pwsh
 
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
