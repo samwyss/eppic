@@ -57,8 +57,8 @@ jobs:
         New-Item -Path $PWD -Name "msmpi" -ItemType "Directory"
         curl -L -o $PWD\msmpi\msmpisetup.exe https://aka.ms/msmpisetup
         curl -L -o $PWD\msmpi\msmpisdk.msi https://aka.ms/msmpisdk
-        Start-Process $PWD\msmpi\msmpisetup.exe -ArgumentList '/quiet' -Wait
-        Start-Process $PWD\msmpi\msmpisdk.msi -ArgumentList '/quiet' -Wait
+        Start-Process -FilePath $PWD\msmpi\msmpisetup.exe -ArgumentList '/quiet' -Wait
+        Start-Process -FilePath $PWD\msmpi\msmpisdk.msi -ArgumentList '/quiet' -Wait
       shell: pwsh
 
     - name: Configure CMake
