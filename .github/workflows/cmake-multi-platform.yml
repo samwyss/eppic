@@ -58,8 +58,8 @@ jobs:
         curl -L -o $PWD\msmpi\msmpisetup.exe https://aka.ms/msmpisetup
         curl -L -o $PWD\msmpi\msmpisdk.msi https://aka.ms/msmpisdk
         cd $PWD\msmpi
-        Start-Process -FilePath msmpisetup.exe -ArgumentList '/quiet' -NoNewWindow -Wait
-        Start-Process -FilePath msmpisdk.msi -ArgumentList '/quiet' -NoNewWindow -Wait
+        Start-Process msmpisetup.exe -ArgumentList '/quiet' -NoNewWindow -Wait
+        Start-Process msmpisdk.msi -ArgumentList '/quiet' -NoNewWindow -Wait
         cd ..
       shell: pwsh
 
