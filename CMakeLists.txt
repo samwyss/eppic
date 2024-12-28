@@ -2,7 +2,6 @@
 cmake_minimum_required(VERSION 3.22)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
 
 # EPPIC Setup
 project(EPPIC
@@ -44,7 +43,7 @@ target_link_libraries(Core
 
 target_link_libraries(${PROJECT_NAME}
         PRIVATE MPI::MPI_CXX
-        PRIVATE CORE
+        PRIVATE Core
 )
 
 target_include_directories(Core
