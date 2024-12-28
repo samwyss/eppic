@@ -23,19 +23,6 @@ if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
         # may also add -fopt-info-vec-all for vectorization report
         add_compile_options(-O3 -g3 -Wall -fstrict-aliasing -ftree-vectorize -march=native -mtune=native -mprefer-vector-width=512 -fno-trapping-math -fno-math-errno -flto)
     endif ()
-elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-    message("Building EPPIC using MSVC compiler flags specified in CMakeLists.txt")
-    if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-        add_compile_options(/Od /Zi)
-    elseif (CMAKE_BUILD_TYPE STREQUAL "Release")
-        # may also add /Qvec-report:2 for vectorization report
-        add_compile_options(/O2 /GL /arch:AVX512 /fp:contract /Gw /Gy)
-        add_link_options(/LTCG:STATUS)
-    elseif (CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo")
-        # may also add /Qvec-report:2 for vectorization report
-        add_compile_options(/O2 /GL /arch:AVX512 /fp:contract /Gw /Gy /Zi)
-        add_link_options(/LTCG:STATUS)
-    endif ()
 endif ()
 
 # dependencies ---------------------------------------------------------------------------------------------------------
