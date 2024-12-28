@@ -56,8 +56,8 @@ jobs:
       run: |
         curl -L -o msmpisetup.exe https://aka.ms/msmpisetup
         curl -L -o msmpisdk.msi https://aka.ms/msmpisdk
-        Start-Process msmpisetup.exe -ArgumentList '/quiet' -Wait
-        Start-Process msmpisdk.msi -ArgumentList '/quiet' -Wait
+        Start-Process msmpisetup.exe '/quiet' -Wait
+        Start-Process msmpisdk.msi '/quiet' -Wait
       shell: pwsh
 
     - name: Configure CMake
