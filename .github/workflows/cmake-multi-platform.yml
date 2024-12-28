@@ -58,8 +58,8 @@ jobs:
         curl -L -o $PWD\msmpi\msmpisetup.exe https://aka.ms/msmpisetup
         curl -L -o $PWD\msmpi\msmpisdk.msi https://aka.ms/msmpisdk
         cd $PWD\msmpi
-        .\msmpisetup.exe -unattend -force
-        .\msmpisdk.msi -unattend -force
+        $PWD\msmpisetup.exe -unattend -force
+        $PWD\msmpisdk.msi -unattend -force
         cd ..
 
     - name: Configure CMake
