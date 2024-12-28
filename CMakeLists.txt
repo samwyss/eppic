@@ -29,15 +29,31 @@ endif ()
 find_package(MPI REQUIRED COMPONENTS CXX)
 
 # compiling and linking ------------------------------------------------------------------------------------------------
-add_executable(${PROJECT_NAME} src/main.cpp)
+add_executable(${PROJECT_NAME}
+        src/main.cpp
+)
+
+add_library(Core
+        ${PROJECT_SOURCE_DIR}/src/core/model.cpp
+        ${PROJECT_SOURCE_DIR}/src/core/model.hpp
+)
+
+target_link_libraries(Core
+    PUBLIC MPI:MPI_CXX
+)
 
 target_link_libraries(${PROJECT_NAME}
-        MPI::MPI_CXX
+        PRIVATE MPI::MPI_CXX
+        PRIVATE CORE
+)
+
+target_include_directories(Core
+    PUBLIC ${MPI_CXX_INCLUDE_PATH}
 )
 
 target_include_directories(${PROJECT_NAME}
         PRIVATE ${PROJECT_SOURCE_DIR}/src
+        PRIVATE ${PROJECT_SOURCE_DIR}/core
         PRIVATE ${PROJECT_BINARY_DIR}
         PRIVATE ${MPI_CXX_INCLUDE_PATH}
-        PRIVATE ${PROJECT_BINARY_DIR}
 )
