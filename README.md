@@ -1,2 +1,2 @@
 # EPPIC
-A Cross-Platform Electromagnetic Parallelized Particle In Cell (EPPIC) Code
+An Electromagnetic Parallelized Particle In Cell (EPPIC) Code
