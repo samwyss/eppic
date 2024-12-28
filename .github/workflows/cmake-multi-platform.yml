@@ -47,13 +47,13 @@ jobs:
         echo "build-output-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
 
     - name: Install OpenMPI on Linux
-      if: runner.os == "Linux"
+      if: runner.os == 'Linux'
       run: |
         sudo apt update
         sudo apt install libopenmpi-dev
 
     - name: Install MSMPI on Windows
-      if: runner.os = "Windows"
+      if: runner.os = 'Windows'
       run: |
         curl -L -o msmpisetup.exe https://aka.ms/msmpisetup
         curl -L -o msmpisdk.msi https://aka.ms/msmpisdk
