@@ -5,13 +5,13 @@ template <typename T>
 struct Triplet
 {
     /// x-component of triplet
-    T x;
+    const T x;
 
     /// y-component of triplet
-    T y;
+    const T y;
 
     /// z-component of triplet
-    T z;
+    const T z;
 };
 
 #endif //FIELDS_TRIPLET_HPP
