@@ -7,7 +7,7 @@ using namespace std;
 
 struct Config
 {
-    /// [Hz] maximum frequency to resolve with FDTD engine
+    /// (Hz) maximum frequency to resolve with FDTD engine
     double max_frequency = 15e9;
 
     /// number of voxels per minimum wavelength for FDTD engine
@@ -19,16 +19,16 @@ struct Config
     /// number of timesteps at which to take a snapshot of selected data streams
     uint64_t num_snapshots = 100;
 
-    /// [s] end time of simulation
+    /// (s) end time of simulation
     double end_time = 25e-9;
 
-    /// [m] length of bounding box in the x-direction
+    /// (m) length of bounding box in the x-direction
     double x_len = 0.1;
 
-    /// [m] length of bounding box in the y-direction
+    /// (m) length of bounding box in the y-direction
     double y_len = 0.1;
 
-    /// [m] length of bounding box in the z-direction
+    /// (m) length of bounding box in the z-direction
     double z_len = 0.1;
 
     /// diagonally isotropic relative permittivity inside bounding box
@@ -37,7 +37,7 @@ struct Config
     /// diagonally isotropic relative permeability inside bounding box
     double mu_r = 1.0;
 
-    /// [S / m] diagonally isotropic conductivity of material in bounding box
+    /// (S / m) diagonally isotropic conductivity of material in bounding box
     double sigma = 0.0;
 };
 
