@@ -32,6 +32,8 @@ add_executable(${PROJECT_NAME}
 add_library(Core
         ${PROJECT_SOURCE_DIR}/src/core/model.cpp
         ${PROJECT_SOURCE_DIR}/src/core/model.hpp
+        ${PROJECT_SOURCE_DIR}/src/core/config.cpp
+        ${PROJECT_SOURCE_DIR}/src/core/config.hpp
 )
 
 target_link_libraries(Core
