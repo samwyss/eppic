@@ -1,5 +1,7 @@
 #include <iostream>
 
+#include "model.hpp"
+
 using namespace std;
 
 /*!
@@ -8,7 +10,8 @@ using namespace std;
  * @param argv argument vector
  * @return
  */
-int main(int argc, char** argv) {
-  cout << "Hello World!\n";
-  return 0;
+int main(int argc, char** argv)
+{
+    cout << "Hello World!\n";
+    return 0;
 }
