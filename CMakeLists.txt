@@ -30,18 +30,23 @@ add_executable(${PROJECT_NAME}
 )
 
 add_library(Core
-        ${PROJECT_SOURCE_DIR}/src/core/model.cpp
-        ${PROJECT_SOURCE_DIR}/src/core/model.hpp
-        ${PROJECT_SOURCE_DIR}/src/core/config.cpp
-        ${PROJECT_SOURCE_DIR}/src/core/config.hpp
+        src/core/model.cpp
+        src/core/model.hpp
+        src/core/config.cpp
+        src/core/config.hpp
 )
 
 add_library(Utils)
 
-add_library(Fields)
+add_library(Fields
+        src/fields/scalar3.cpp
+        src/fields/scalar3.hpp
+        src/fields/vector3.cpp
+        src/fields/vector3.hpp
+)
 
 add_library(Constants
-        ${PROJECT_SOURCE_DIR}/src/constants/physical.hpp
+        src/constants/physical.hpp
 )
 
 target_link_libraries(Core
