@@ -40,7 +40,9 @@ add_library(Utils)
 
 add_library(Fields)
 
-add_library(Constants)
+add_library(Constants
+        ${PROJECT_SOURCE_DIR}/src/constants/physical.hpp
+)
 
 target_link_libraries(Core
         PUBLIC MPI::MPI_CXX
