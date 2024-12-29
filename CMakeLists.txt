@@ -51,8 +51,13 @@ add_library(Constants
         src/constants/physical.hpp
 )
 
+set_target_properties(Constants PROPERTIES LINKER_LANGUAGE CXX)
+
 target_link_libraries(Core
         PUBLIC MPI::MPI_CXX
+        PUBLIC Utils
+        PUBLIC Fields
+        PUBLIC Constants
 )
 
 target_link_libraries(${PROJECT_NAME}
