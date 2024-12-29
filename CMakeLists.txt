@@ -45,6 +45,7 @@ add_library(Fields
         src/fields/scalar3.hpp
         src/fields/vector3.cpp
         src/fields/vector3.hpp
+        src/fields/triplet.hpp
 )
 
 add_library(Constants
