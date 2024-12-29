@@ -36,7 +36,9 @@ add_library(Core
         src/core/config.hpp
 )
 
-add_library(Utils)
+add_library(Utils
+        src/utils/messages.cpp
+        src/utils/messages.hpp)
 
 add_library(Fields
         src/fields/scalar3.cpp
