@@ -36,6 +36,12 @@ add_library(Core
         ${PROJECT_SOURCE_DIR}/src/core/config.hpp
 )
 
+add_library(Utils)
+
+add_library(Fields)
+
+add_library(Constants)
+
 target_link_libraries(Core
         PUBLIC MPI::MPI_CXX
 )
