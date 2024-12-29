@@ -2,11 +2,9 @@
 #define CORE_MODEL_HPP
 
 
-
-class Model {
-
+class Model
+{
 };
-
 
 
 #endif //CORE_MODEL_HPP
