@@ -45,10 +45,10 @@ add_library(Utils
         src/utils/messages.hpp)
 
 add_library(Fields
-        src/fields/scalar3.cpp
-        src/fields/scalar3.hpp
-        src/fields/vector3.cpp
-        src/fields/vector3.hpp
+        src/fields/scalar.cpp
+        src/fields/scalar.hpp
+        src/fields/vector.cpp
+        src/fields/vector.hpp
         src/fields/triplet.hpp
 )
 

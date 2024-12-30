@@ -1,4 +1,4 @@
-#include "scalar3.hpp"
+#include "scalar.hpp"
 
 template <typename T>
 Scalar3<T>::Scalar3(const size_t num_x, const size_t num_y, const size_t num_z, const T value) :
