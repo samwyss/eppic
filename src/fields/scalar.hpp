@@ -49,6 +49,51 @@ public:
      */
     Scalar3& operator=(const T& rhs);
 
+    /*!
+     * data getter
+     * @return const reference to data
+     */
+    [[nodiscard]] const T& get_data() const
+    {
+        return data;
+    }
+
+    /*!
+     * num_cells getter
+     * @return const reference to num_cells
+     */
+    [[nodiscard]] const Triplet<size_t>& get_num_cells() const
+    {
+        return num_cells;
+    }
+
+    /*!
+     * row_cells getter
+     * @return const reference to row_cells
+     */
+    [[nodiscard]] const size_t& get_row_cells() const
+    {
+        return row_cells;
+    }
+
+    /*!
+     * plane_cells getter
+     * @return const reference to plane_cells
+     */
+    [[nodiscard]] const size_t& get_plane_cells() const
+    {
+        return plane_cells;
+    }
+
+    /*!
+     * vol_cells getter
+     * @return const reference to vol_cells
+     */
+    [[nodiscard]] const size_t& get_vol_cells() const
+    {
+        return vol_cells;
+    }
+
 private:
     /// 1D array in row-major format containing field data
     T* data;
@@ -56,13 +101,13 @@ private:
     /// number of cells in each direction
     const Triplet<size_t> num_cells;
 
-    /// number of cells in each row
+    /// number of cells in each row within plane
     const size_t row_cells;
 
-    /// number of cells in each plane
+    /// number of cells in each plane within bounding box
     const size_t plane_cells;
 
-    /// number of cells in volume
+    /// number of cells in bounding box volume
     const size_t vol_cells;
 };
 
