@@ -6,7 +6,7 @@ Scalar3<T>::Scalar3(const size_t num_x, const size_t num_y, const size_t num_z, 
     vol_cells(num_x * num_y * num_z)
 {
     // create data array
-    data = new T[num_x * num_y * num_z];
+    data = new T[vol_cells];
 
     // initialize data array with value with overloaded assignment operator
     (*this) = value;
