@@ -13,17 +13,11 @@ FetchContent_Declare(
         EXCLUDE_FROM_ALL
 )
 FetchContent_MakeAvailable(googletest)
-
-# compiling and linking ------------------------------------------------------------------------------------------------
-add_executable(example_test example_test.cpp)
-
 add_library(GTest::GTest INTERFACE IMPORTED)
 target_link_libraries(GTest::GTest INTERFACE gtest_main)
 
-target_link_libraries(example_test
-        PRIVATE
-        GTest::GTest
-        Core)
-
-# tests ----------------------------------------------------------------------------------------------------------------
-add_test(example_gtests example_test)
+# field/scalar ------------------------------------------------------------------------------------------------
+add_executable(field_scalar field_scalar.cpp)
+target_include_directories(field_scalar PRIVATE ../src/fields)
+target_link_libraries(field_scalar PRIVATE GTest::GTest PRIVATE Fields)
+add_test(NAME field_scalar COMMAND field_scalar)
