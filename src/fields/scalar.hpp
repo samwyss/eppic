@@ -50,15 +50,6 @@ public:
     Scalar3& operator=(const T& rhs);
 
     /*!
-     * data getter
-     * @return const reference to data
-     */
-    [[nodiscard]] const T& get_data() const
-    {
-        return data;
-    }
-
-    /*!
      * num_cells getter
      * @return const reference to num_cells
      */
