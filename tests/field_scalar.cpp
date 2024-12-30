@@ -69,6 +69,111 @@ TEST(field_scalar3, constructor_correct_row_cells)
     ASSERT_EQ(scalar3.get_row_cells(), NUM_Z);
 }
 
+/// tests for correct instantiation of plane_cells member
+TEST(field_scalar3, constructor_correct_plane_cells)
+{
+    // construct Scalar3<T>
+    const auto scalar3 = setup_scalar3<double>();
+
+    // assert row_cells == NUM_Y * NUM_Z
+    ASSERT_EQ(scalar3.get_plane_cells(), NUM_Y * NUM_Z);
+}
+
+/// tests for correct instantiation of vol_cells member
+TEST(field_scalar3, constructor_correct_vol_cells)
+{
+    // construct Scalar3<T>
+    const auto scalar3 = setup_scalar3<double>();
+
+    // assert vol_cells == NUM_X * NUM_Y * NUM_Z
+    ASSERT_EQ(scalar3.get_vol_cells(), NUM_X * NUM_Y * NUM_Z);
+}
+
+/// tests overloaded () operator for read-write access
+TEST(field_scalar3, operator_index_rw)
+{
+    // construct Scalar3<T>
+    auto scalar3 = setup_scalar3<double>();
+
+    // new value
+    constexpr double NEW_VAL = 5.0;
+
+    // original value (must be equal to that in setup_scalar3<T>())
+    constexpr double OLD_VAL = 4.0;
+
+    // assign element
+    scalar3(0, 0, 1) = NEW_VAL;
+
+    // assert (0, 0, 1) is now NEW_VAL
+    ASSERT_EQ(scalar3(0, 0, 1), NEW_VAL);
+
+    // assert neighboring nodes are unaffected
+    ASSERT_EQ(scalar3(0, 0, 0), OLD_VAL);
+    ASSERT_EQ(scalar3(0, 1, 0), OLD_VAL);
+}
+
+/// tests overloaded () operator for read access
+TEST(field_scalar3, operator_index_r)
+{
+    // construct Scalar3<T>
+    auto scalar3 = setup_scalar3<double>();
+
+    // original value (must be equal to that in setup_scalar3<T>())
+    constexpr double VAL = 4.0;
+
+    // assert read only index does not throw and is original value for several indices
+    ASSERT_NO_THROW(scalar3(0,0,0));
+    ASSERT_EQ(scalar3(0, 0, 0), VAL);
+    ASSERT_NO_THROW(scalar3(0, 1, 2));
+    ASSERT_EQ(scalar3(0, 1, 2), VAL);
+    ASSERT_NO_THROW(scalar3(0,1,0));
+    ASSERT_EQ(scalar3(0, 1, 0), VAL);
+}
+
+/// tests overloaded assignment operator for spatially constant scalar value
+TEST(field_scalar3, operator_assignment)
+{
+    // construct Scalar3<T>
+    auto scalar3 = setup_scalar3<double>();
+
+    // assert assigment operator does not throw
+    ASSERT_NO_THROW(scalar3 = 5.0);
+
+    // assert all elements have been set to 5.0
+    for (auto i = 0; i < scalar3.get_num_cells().x; ++i)
+    {
+        for (auto j = 0; j < scalar3.get_num_cells().y; ++j)
+        {
+            for (auto k = 0; k < scalar3.get_num_cells().z; ++k)
+            {
+                ASSERT_EQ(scalar3(i, j, k), 5.0);
+            }
+        }
+    }
+}
+
+/// tests for correct instantiation of all field values
+TEST(field_scalar3, constructor_correct_field_instantiation)
+{
+    // construct Scalar3<T>
+    const auto scalar3 = setup_scalar3<double>();
+
+    // this instantiated value must match that found in setup_scalar3<T>
+    constexpr double VAL = 4.0;
+
+    // assert all elements have been set to VAL
+    for (auto i = 0; i < scalar3.get_num_cells().x; ++i)
+    {
+        for (auto j = 0; j < scalar3.get_num_cells().y; ++j)
+        {
+            for (auto k = 0; k < scalar3.get_num_cells().z; ++k)
+            {
+                ASSERT_EQ(scalar3(i, j, k), VAL);
+            }
+        }
+    }
+}
+
 /*!
  * main field/scalar testing driver function
  * @param argc argument count
