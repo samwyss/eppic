@@ -5,7 +5,7 @@
 using namespace std;
 
 /*!
-* main driver function and build target
+ * main driver function and build target
  * @param argc argument count
  * @param argv argument vector
  * @return success code
