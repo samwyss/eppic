@@ -31,7 +31,7 @@ public:
      * @param k index into z-direction elements
      * @return pointer to element at desired index
      */
-    T* operator()(size_t i, size_t j, size_t k);
+    T& operator()(size_t i, size_t j, size_t k);
 
     /*!
      * Scalar3 overloaded () operator for read access

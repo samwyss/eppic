@@ -19,9 +19,9 @@ Scalar3<T>::~Scalar3()
 }
 
 template <typename T>
-T* Scalar3<T>::operator()(const size_t i, const size_t j, const size_t k)
+T& Scalar3<T>::operator()(const size_t i, const size_t j, const size_t k)
 {
-    return &data[k + row_cells * j + plane_cells * i];
+    return data[k + row_cells * j + plane_cells * i];
 }
 
 template <typename T>
